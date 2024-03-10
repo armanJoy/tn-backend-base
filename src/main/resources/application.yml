@@ -1,0 +1,24 @@
+server:
+  port: 8088
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/transportdb
+    username: postgres
+    password: j363
+
+
+jwt:
+  secret: TransportManagementSystemSecRetKeyValueForJwtToken
+  validation-time: 6000000
+  refresh-time: 86400000
+
+LOG_FILE: myapp
+
+openapi:
+  local-url: http://localhost:8088
+  dev-url: http://localhost:8080

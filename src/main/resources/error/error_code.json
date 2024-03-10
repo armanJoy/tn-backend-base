@@ -1,0 +1,20 @@
+{
+  "apiErrors": [
+    {
+      "code": "common101",
+      "message": "Not Found"
+    },
+    {
+      "code": "auth101",
+      "message": "Not Authenticated"
+    },
+    {
+      "code": "auth102",
+      "message": "Valid Jwt Token Missing in Header!"
+    },
+    {
+      "code": "item1",
+      "message": "This Item Code Already Exist "
+    }
+  ]
+}

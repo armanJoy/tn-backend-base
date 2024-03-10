@@ -1,0 +1,107 @@
+
+<configuration>
+    <property name="APP_Name" value="transport" />
+    <timestamp key="bySecond" datePattern="yyyyMMdd HHmmss"/>
+    <contextName>${APP_Name}</contextName>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{85} [%file:%line] - %msg%n</Pattern>
+        </layout>
+    </appender>
+    
+    <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{85} - %msg%n</Pattern>
+        </encoder>
+<!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+<!--            <level>INFO</level>-->
+<!--            <onMatch>ACCEPT</onMatch>-->
+<!--            <onMismatch>DENY</onMismatch>-->
+<!--        </filter>-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/info.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+<!--    <appender name="FILE_DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{85} - %msg%n</Pattern>-->
+<!--        </encoder>-->
+<!--        <filter class="ch.qos.logback.classic.filter.LevelFilter">-->
+<!--            <level>DEBUG</level>-->
+<!--            <onMatch>ACCEPT</onMatch>-->
+<!--            <onMismatch>DENY</onMismatch>-->
+<!--        </filter>-->
+
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/debug.%d{yyyy-MM-dd}-%i.log</fileNamePattern>-->
+<!--            <maxHistory>30</maxHistory>-->
+
+<!--            <timeBasedFileNamingAndTriggeringPolicy-->
+<!--                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+<!--                <maxFileSize>10MB</maxFileSize>-->
+<!--            </timeBasedFileNamingAndTriggeringPolicy>-->
+
+<!--        </rollingPolicy>-->
+<!--    </appender>-->
+
+<!--    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{85} - %msg%n</Pattern>-->
+<!--        </encoder>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>ERROR</level>-->
+<!--            &lt;!&ndash; <onMatch>ACCEPT</onMatch>-->
+<!--                <onMismatch>DENY</onMismatch>&ndash;&gt;-->
+<!--        </filter>-->
+
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/error.%d{yyyy-MM-dd}-%i.log</fileNamePattern>-->
+<!--            <maxHistory>30</maxHistory>-->
+<!--            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+<!--                <maxFileSize>10MB</maxFileSize>-->
+<!--            </timeBasedFileNamingAndTriggeringPolicy>-->
+<!--        </rollingPolicy>-->
+<!--        &lt;!&ndash;     <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
+<!--                  <maxFileSize>5MB</maxFileSize>-->
+<!--            </triggeringPolicy>  &ndash;&gt;-->
+<!--    </appender>-->
+
+<!--    <appender name="MONITOR" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{85} - %msg%n</Pattern>-->
+<!--        </encoder>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>DEBUG</level>-->
+<!--        </filter>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/monitor.%d{yyyy-MM-dd}-%i.log</fileNamePattern>-->
+<!--            <maxHistory>30</maxHistory>-->
+<!--            <timeBasedFileNamingAndTriggeringPolicy-->
+<!--                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">-->
+<!--                <maxFileSize>10MB</maxFileSize>-->
+<!--            </timeBasedFileNamingAndTriggeringPolicy>-->
+<!--        </rollingPolicy>-->
+<!--    </appender>-->
+
+    <logger name="org" level="INFO" />
+<!--    <logger name="monitor" additivity="false" level="DEBUG" />-->
+
+<!--    <logger name="monitor" additivity="false" level="DEBUG">-->
+<!--        <appender-ref ref="MONITOR" />-->
+<!--    </logger>-->
+
+    <root level="DEBUG">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE_INFO" />
+<!--        <appender-ref ref="FILE_DEBUG" />-->
+<!--        <appender-ref ref="FILE_ERROR" />-->
+    </root>
+</configuration>
